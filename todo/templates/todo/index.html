@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+{% block content %}
+<h2>ToDo一覧</h2>
+<p><a href="{% url 'todo:create' %}">新規作成</a></p>
+
+{% for todo in todo_list %}
+<h3>タイトル：{{ todo.title }}</h3>
+<p>期日：{{ todo.ended_at }}</p>
+<p><a href="{% url 'todo:detail' todo.id %}">詳細確認</a></p>
+<hr>
+{% endfor %}
+{% endblock %}

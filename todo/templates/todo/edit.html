@@ -1,0 +1,22 @@
+{% extends './base.html' %} {% load bootstrap4 %} {% block content %}
+<h2>ToDo詳細編集</h2>
+<form action='{% url "todo:update" todo.id %}' method="POST">
+  <!-- セキュリティーの為必須！ -->
+  {% csrf_token %} 
+  {% for field in registerForm %} 
+  {% if field.name == "started_at" or field.name == "ended_at"%}
+  
+  <p>
+    <label for="{{ field.name }}">{{ field.name }}</label>
+    <input type="date" name="{{ field.name }}" value=""/>
+  </p>
+  {% else %} 
+  {% bootstrap_field field layout="horizontal" %} 
+  {% endif %} 
+  {% endfor %}
+  <button type="submit">更新</button>
+</form>
+<p><a href="{% url 'todo:detail' todo.id %}">戻る</a></p>
+<p><a href="{% url 'todo:index' %}">一覧へ戻る</a></p>
+
+{% endblock %}

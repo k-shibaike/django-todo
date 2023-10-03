@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+{% block content %}
+<h2>ToDo詳細</h2>
+
+<h3>タイトル{{ todo.title }}</h3>
+<p>{{ todo.detail }}</p>
+<p>期間：{{ todo.started_at }} ~ {{ todo.ended_at }}</p>
+<p><a href="{% url 'todo:edit' todo.id %}">編集</a></p>
+<p><a href="{% url 'todo:delete' todo.id %}">削除</a></p>
+<p><a href="{% url 'todo:index' %}">一覧へ戻る</a></p>
+
+{% endblock %}
